@@ -13,7 +13,7 @@ class TextDataset(torch.utils.data.Dataset):
     def __init__(self, text_path, word_dict_path, n_words=20000, max_len=30):
         print('Reading text file...')
         try:
-            with open(text_path, 'r', encoding='utf-8') as f:
+            with open(text_path, 'r', encoding='shift-jis') as f:
                 sentences = f.readlines()
         except IOError as e:
             print(e)

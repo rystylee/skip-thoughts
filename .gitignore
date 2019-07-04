@@ -8,6 +8,8 @@ VENV/
 
 # 
 data/
+logs/
+result/
 
 # Editor
 .vscode/

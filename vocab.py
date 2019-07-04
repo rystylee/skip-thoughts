@@ -76,7 +76,7 @@ if __name__ == '__main__':
 
     print('Reading text file from {}...'.format(args.text_file))
     try:
-        with open(args.text_file, 'r', encoding='utf-8') as f:
+        with open(args.text_file, 'r', encoding='shift-jis') as f:
             text = f.readlines()
     except IOError as e:
         print(e)
