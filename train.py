@@ -68,10 +68,12 @@ def train(args):
             torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=args.grad_clip)
             optimizer.step()
 
+            # Logging
             if itr % args.log_freq == 0:
                 writer.add_scalar('loss', loss.item(), itr)
                 print('loss: {}...'.format(loss.item()))
 
+            # Saving
             if itr % args.save_freq == 0:
                 model_path = '{}/{}_itr.pth'.format(args.save_dir, itr)
                 torch.save(model.state_dict(), model_path)

@@ -75,9 +75,10 @@ class Decoder(nn.Module):
 
 
 ######################################################################
+#
 # The Uniskip
 #
-#
+######################################################################
 class UniSkip(nn.Module):
     def __init__(self, n_words, dim_word, dim_thought, max_seq_len):
         super(UniSkip, self).__init__()

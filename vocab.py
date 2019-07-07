@@ -73,7 +73,7 @@ def load_pickle(path):
         print(e)
 
 
-if __name__ == '__main__':
+def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--data_dir', type=str, default='data')
     parser.add_argument('--text_file', type=str, default='data/sample.txt')
@@ -104,3 +104,7 @@ if __name__ == '__main__':
     print('Saving dictionary to {}..'.format(args.data_dir))
     save_dictionary(word_dict, word_count, args.data_dir)
     print('Done.')
+
+
+if __name__ == '__main__':
+    main()
