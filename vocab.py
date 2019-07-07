@@ -5,10 +5,15 @@
 # Constructing and loading dictionaries
 #
 
+import re
 import pickle as pkl
 from collections import OrderedDict
 import argparse
 from janome.tokenizer import Tokenizer
+
+
+def preprocess(text):
+    return re.findall('[^。]+。?', text)
 
 
 def tokenize(text):
@@ -72,14 +77,19 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--data_dir', type=str, default='data')
     parser.add_argument('--text_file', type=str, default='data/sample.txt')
+    parser.add_argument('--encoding', type=str, default='shift-jis')
     args = parser.parse_args()
 
     print('Reading text file from {}...'.format(args.text_file))
     try:
-        with open(args.text_file, 'r', encoding='shift-jis') as f:
-            text = f.readlines()
+        with open(args.text_file, 'r', encoding=args.encoding) as f:
+            text = f.read()
     except IOError as e:
         print(e)
+    print('Done.')
+
+    print('Preprocessing...')
+    text = preprocess(text)
     print('Done.')
 
     print('Tokenizing...')
